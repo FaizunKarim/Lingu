@@ -25,13 +25,18 @@ Aplikasi web penerjemah & chatbot AI berbasis Gemini API.
 - Ubah ke endpoint AI lain, misal OpenAI:
   const API_URL = "https://api.openai.com/v1/chat/completions";
 - Pastikan payload & header di fungsi callGeminiAPI sudah sesuai format API baru.
+- Kalau mau aman, bisa disimpan di .env
 
-## Struktur File
-
-- index.html
-- css/style.css
-- js/script.js
-
----
+## Struktur Folder
+```
+Lingu
+│
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── script.js
+└── README.md
+```
 
 Aplikasi Siap Digunakan !!!!
