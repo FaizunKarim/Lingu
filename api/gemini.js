@@ -5,7 +5,10 @@ export default async function handler(req, res) {
 
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-  if (!GEMINI_API_KEY) {
+  if (GEMINI_API_KEY) {
+    console.log('API Key Ditemukan. Awal:', GEMINI_API_KEY.substring(0, 5), '... Akhir:', GEMINI_API_KEY.slice(-4));
+  } else {
+    console.error('ERROR: Environment variable GEMINI_API_KEY tidak ditemukan!');
     return res.status(500).json({ error: 'API Key for Gemini is not configured on the server.' });
   }
 
@@ -14,21 +17,21 @@ export default async function handler(req, res) {
   try {
     const geminiResponse = await fetch(API_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(req.body),
     });
 
     const geminiData = await geminiResponse.json();
 
     if (!geminiResponse.ok) {
+       console.error('Error dari Google API:', geminiData);
        return res.status(geminiResponse.status).json(geminiData);
     }
 
     res.status(200).json(geminiData);
 
   } catch (error) {
+    console.error('Error internal server:', error);
     res.status(500).json({ error: `An internal server error occurred: ${error.message}` });
   }
 }
