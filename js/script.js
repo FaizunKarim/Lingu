@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const GEMINI_API_KEY = "API_KEY";
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const API_URL = '/api/gemini';
     const config = {
         languages: {
             'Indonesian': 'id-ID', 'English': 'en-US', 'Javanese': 'jv-ID', 'Sundanese': 'su-ID',
@@ -103,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.chatMessages.scrollTop = dom.chatMessages.scrollHeight;
     };
     const callGeminiAPI = async (payload) => {
-        const response = await fetch(API_URL, {
+        const response = await fetch('/api/gemini', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -126,10 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleTranslation = async () => {
         hideNotice();
         const textToTranslate = dom.sourceText.value.trim();
-        if (GEMINI_API_KEY === "API_KEY") {
-            showNotice('API Key belum dimasukkan. Mohon periksa file script.js.', 'red');
-            return;
-        }
         if (!textToTranslate) {
             showNotice('Masukkan teks untuk diterjemahkan.', 'yellow');
             return;
@@ -155,10 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleChatMessage = async () => {
         hideNotice();
         const userMessage = dom.chatbotInput.value.trim();
-        if (GEMINI_API_KEY === "API_KEY") {
-            showNotice('API Key belum dimasukkan untuk Chatbot.', 'red');
-            return;
-        }
         if (!userMessage) return;
         appendChatMessage('user', userMessage);
         state.chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
