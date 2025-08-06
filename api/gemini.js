@@ -6,9 +6,9 @@ export default async function handler(req, res) {
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
   if (GEMINI_API_KEY) {
-    console.log('API Key Ditemukan. Awal:', GEMINI_API_KEY.substring(0, 5), '... Akhir:', GEMINI_API_KEY.slice(-4));
+    console.log('API Key Ditemukan...');
   } else {
-    console.error('ERROR: Environment variable GEMINI_API_KEY tidak ditemukan!');
+    console.error('ERROR: Environment variable GEMINI_API_KEY tidak ditemukan!!!');
     return res.status(500).json({ error: 'API Key for Gemini is not configured on the server.' });
   }
 
