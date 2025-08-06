@@ -3,7 +3,7 @@ export const dom = {
     prevTabBtn: document.getElementById('prev-tab-btn'),
     nextTabBtn: document.getElementById('next-tab-btn'),
     activeTabName: document.getElementById('active-tab-name'),
-
+    
     translatorSection: document.getElementById('translator-section'),
     sourceLang: document.getElementById('source-lang'),
     targetLang: document.getElementById('target-lang'),
@@ -22,4 +22,12 @@ export const dom = {
     chatbotInput: document.getElementById('chatbot-input'),
     sendChatBtn: document.getElementById('send-chat-btn'),
     chatbotLoader: document.getElementById('chatbot-loader'),
+
+    downloaderSection: document.getElementById('downloader-section'),
+    downloaderUrlInput: document.getElementById('downloader-url'),
+    downloadBtn: document.getElementById('download-btn'),
+    downloaderResult: document.getElementById('downloader-result'),
+    
+    inputArea: document.getElementById('input-area'),
+    chatbotInputWrapper: document.getElementById('chatbot-input-wrapper'),
 };
