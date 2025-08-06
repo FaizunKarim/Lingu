@@ -23,6 +23,8 @@ Lingu
 │   ├── script.js             # Inisialisasi aplikasi
 │   ├── dom.js                # Referensi elemen DOM
 │   ├── translator.js         # Logika penerjemah
+│   ├── downloader.js         # Backend untuk fitur Downloader
+│   ├── downloader.js         # Logika Downloader
 │   ├── chatbot.js            # Logika chatbot
 │   ├── service.js            # Koneksi ke Gemini API
 ├── api/
@@ -37,9 +39,9 @@ Lingu
 
 1. **Frontend Saja (Tanpa Backend Javascript):**
    - Buka `index.html` di browser.
-   - Pastikan API Gemini sudah tersedia via endpoint `/api/gemini` (misal, deploy di Vercel).
 
 2. **Dengan Backend (Node.js/Vercel):**
+   - Pastikan sudah memiliki API Gemini atau AI Agent lainnya.
    - Simpan API Key Gemini di file `.env`:
      ```
      GEMINI_API_KEY=API_KEY_KAMU
@@ -48,9 +50,9 @@ Lingu
    - Instal Vercel CLI: npm install -g vercel
    - Login ke Vercel: vercel login
    - Jalankan server pengembangan: vercel dev
-   - Buka http://localhost:3000 di browser Anda.
+   - Web akan secara otomatis berjalan di server lokal http://localhost:3000 di browser Anda.
 
-3. **Dapatkan API Key Gemini:**
+4. **Dapatkan API Key Gemini:**
    - Kunjungi [Google AI Studio](https://aistudio.google.com/app/apikey).
    - Login, buat API Key, salin dan simpan di `.env`.
 
