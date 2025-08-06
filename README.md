@@ -1,42 +1,76 @@
 # Lingu
 
-Aplikasi web penerjemah & chatbot AI berbasis Gemini API.
+Aplikasi web **Chatbot AI** dan **Translator** berbasis Gemini API.
 
-## Cara Menjalankan
+## Fitur
 
-1. Download semua file, lalu buka `index.html` di browser.
-2. Dapatkan API_KEY Gemini (lihat di bawah).
-3. Buka file `js/script.js`, ganti:
-   const GEMINI_API_KEY = "API_KEY";
-   menjadi:
-   const GEMINI_API_KEY = "API_KEY_YANG_KAMU_DAPATKAN";
-4. Kalau mau aman, bisa disimpan di .env
-
-## Cara Mendapatkan API_KEY Gemini
-
-1. Buka https://aistudio.google.com/app/apikey
-2. Login dengan akun Google.
-3. Klik "Create API Key", salin API Key-nya.
-4. Masukkan ke file `js/script.js` seperti langkah di atas.
-
-## Mengganti API_URL untuk AI Agent Lain
-
-- Ganti variabel API_URL di `js/script.js`:
-  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-- Ubah ke endpoint AI lain, misal OpenAI:
-  const API_URL = "https://api.openai.com/v1/chat/completions";
-- Pastikan payload & header di fungsi callGeminiAPI sudah sesuai format API baru.
+- **Penerjemah Bahasa:** Mendukung banyak bahasa (Indonesia, Inggris, Jawa, Sunda, Spanyol, Prancis, Jerman, Jepang, Korea, Arab, Mandarin, Rusia).
+- **Input Suara & Output Suara:** Bisa input teks via mikrofon dan mendengarkan hasil terjemahan.
+- **Chatbot AI:** Chat dengan AI bernama Lingu, karakter sarkas dan sinis, default bahasa Indonesia.
+- **UI Modern:** Desain responsif dengan Tailwind CSS.
+- **Salin & Bersihkan Teks:** Mudah menyalin hasil terjemahan dan membersihkan input.
+- **Tab Navigasi:** Pindah antar fitur dengan tombol tab.
 
 ## Struktur Folder
+
 ```
 Lingu
 │
-├── index.html
+├── index.html                # Halaman utama
 ├── css/
-│   └── style.css
+│   └── style.css             # Style kustom
 ├── js/
-│   └── script.js
+│   ├── script.js             # Inisialisasi aplikasi
+│   ├── dom.js                # Referensi elemen DOM
+│   ├── translator.js         # Logika penerjemah
+│   ├── chatbot.js            # Logika chatbot
+│   ├── service.js            # Koneksi ke Gemini API
+├── api/
+│   └── gemini.js             # API backend Gemini (untuk Vercel/Node.js)
+├── site.webmanifest          # Konfigurasi PWA
+├── .env                      # Simpan API Key (jika pakai backend)
+├── .gitignore
 └── README.md
 ```
 
-Aplikasi Siap Digunakan !!!!
+## Cara Menjalankan
+
+1. **Frontend Saja (Tanpa Backend Javascript):**
+   - Buka `index.html` di browser.
+   - Pastikan API Gemini sudah tersedia via endpoint `/api/gemini` (misal, deploy di Vercel).
+
+2. **Dengan Backend (Node.js/Vercel):**
+   - Simpan API Key Gemini di file `.env`:
+     ```
+     GEMINI_API_KEY=API_KEY_KAMU
+     ```
+   - Endpoint backend ada di [`api/gemini.js`](api/gemini.js).
+   - Instal Vercel CLI: npm install -g vercel
+   - Login ke Vercel: vercel login
+   - Jalankan server pengembangan: vercel dev
+   - Buka http://localhost:3000 di browser Anda.
+
+3. **Dapatkan API Key Gemini:**
+   - Kunjungi [Google AI Studio](https://aistudio.google.com/app/apikey).
+   - Login, buat API Key, salin dan simpan di `.env`.
+
+## Konfigurasi API
+
+- **Frontend:** Kode frontend akan mengirim permintaan ke `/api/gemini` menggunakan [`callGeminiAPI`](js/service.js).
+- **Backend:** Endpoint di [`api/gemini.js`](api/gemini.js) akan meneruskan permintaan ke Google Gemini API.
+
+## Teknologi
+
+- **Tailwind CSS** untuk styling.
+- **Web Speech API** untuk input/output suara.
+- **Fetch API** untuk komunikasi dengan backend.
+- **Google Gemini API** untuk AI dan penerjemah.
+
+## Credits
+
+- Dibuat oleh Faizun.
+- Deploy di Vercel.
+
+---
+
+Aplikasi siap digunakan! 🚀
