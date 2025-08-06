@@ -1,14 +1,13 @@
 # Lingu
 
-Aplikasi web **Chatbot AI** dan **Translator** berbasis Gemini API.
+Aplikasi web **Chatbot AI**, **Downloader**, dan **Translator**
 
 ## Fitur
 
 - **Penerjemah Bahasa:** Mendukung banyak bahasa (Indonesia, Inggris, Jawa, Sunda, Spanyol, Prancis, Jerman, Jepang, Korea, Arab, Mandarin, Rusia).
 - **Input Suara & Output Suara:** Bisa input teks via mikrofon dan mendengarkan hasil terjemahan.
 - **Chatbot AI:** Chat dengan AI bernama Lingu, karakter sarkas dan sinis, default bahasa Indonesia.
-- **UI Modern:** Desain responsif dengan Tailwind CSS.
-- **Salin & Bersihkan Teks:** Mudah menyalin hasil terjemahan dan membersihkan input.
+- **Downloader Media:** Mengunduh video dan media dari berbagai platform seperti TikTok, YouTube, Instagram, dan lainnya.
 - **Tab Navigasi:** Pindah antar fitur dengan tombol tab.
 
 ## Struktur Folder
