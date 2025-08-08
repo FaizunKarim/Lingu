@@ -1,5 +1,5 @@
-import { aio, ttdl, fbdown, youtube, pinterest } from 'btch-downloader';
-import instagramdl from 'priyansh-ig-downloader';
+import { aio, ttdl, fbdown, youtube } from 'btch-downloader';
+import { instagram, pinterest } from 'bima-sky';
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -14,9 +14,11 @@ export default async function handler(req, res) {
     try {
         let data;
         if (url.includes('instagram.com')) {
+            // --- MENGGUNAKAN PUSTAKA BARU UNTUK INSTAGRAM ---
             const result = await instagramdl(url);
+            // Mengambil link unduhan dari hasil
             const downloadUrl = result?.[0]?.download_link; 
-            if (!downloadUrl) throw new Error('Link unduhan Instagram tidak ditemukan.');
+            if (!downloadUrl) throw new Error('Link unduhan Instagram tidak ditemukan dari pustaka baru.');
             data = { url: downloadUrl };
 
         } else if (url.includes('tiktok.com')) {
@@ -25,8 +27,6 @@ export default async function handler(req, res) {
             data = await fbdown(url);
         } else if (url.includes('youtube.com') || url.includes('youtu.be')) {
             data = await youtube(url);
-        } else if (url.includes('pinterest.com') || url.includes('pin.it')) {
-            data = await pinterest(url);
         } else {
             try {
                 data = await aio(url);
