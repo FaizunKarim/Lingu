@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@bochilteam/scraper-sosmed": "^1.0.5",
-    "btch-downloader": "^4.1.21"
+    "@bochilteam/scraper": "^5.0.1"
   }
 }
