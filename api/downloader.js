@@ -1,5 +1,4 @@
-import { fbdown, ttdl, youtube } from 'btch-downloader';
-import { instagramdl, pinterestdl } from '@bochilteam/scraper-sosmed';
+import { tiktok, instagram, facebook, youtube, pinterest } from '@bochilteam/scraper';
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -13,20 +12,31 @@ export default async function handler(req, res) {
 
     try {
         let data;
-        if (url.includes('instagram.com')) {
-            const result = await instagramdl(url);
-            data = { url: result[0].download_link }; 
-        } else if (url.includes('pinterest.com') || url.includes('pin.it')) {
-            data = await pinterestdl(url);
-        } else if (url.includes('tiktok.com')) {
-            data = await ttdl(url);
+        let result; // Variabel untuk menampung hasil
+
+        if (url.includes('tiktok.com')) {
+            result = await tiktok(url);
+        } else if (url.includes('instagram.com')) {
+            result = await instagram(url);
         } else if (url.includes('facebook.com') || url.includes('fb.watch')) {
-            data = await fbdown(url);
+            result = await facebook(url);
         } else if (url.includes('youtube.com') || url.includes('youtu.be')) {
-            data = await youtube(url);
+            result = await youtube(url);
+        } else if (url.includes('pinterest.com') || url.includes('pin.it')) {
+            result = await pinterest(url);
         } else {
             return res.status(400).json({ error: 'URL tidak didukung.' });
         }
+        
+        // Cek dan ambil URL download dari hasil
+        const downloadUrl = result?.[0]?.url;
+
+        if (!downloadUrl) {
+            throw new Error('Tidak dapat menemukan link unduhan dari hasil.');
+        }
+
+        // Format data agar sesuai dengan frontend
+        data = { url: downloadUrl };
         
         res.status(200).json(data);
 
