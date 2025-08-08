@@ -4,7 +4,7 @@ Website multifungsi: Chatbot AI, Translator, dan Downloader dalam satu aplikasi 
 
 ## Fitur Utama
 
-- Chatbot AI berbasis Gemini API, karakter sarkas dan sinis, default bahasa Indonesia
+- Chatbot AI berbasis Gemini API, default bahasa Indonesia
 - Translator, include input suara, output suara, salin hasil, dan bersihkan teks
 - Downloader, untuk memproses link dari berbagai platform
 
