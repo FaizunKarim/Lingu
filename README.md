@@ -1,38 +1,28 @@
-# Lingu
+# LINGU
 
-Aplikasi web **Chatbot AI**, **Downloader**, dan **Translator**
+Website multifungsi: Chatbot AI, Translator, dan Downloader dalam satu aplikasi web modern.
 
-## Fitur
+## Fitur Utama
 
-- **Penerjemah Bahasa:** Mendukung banyak bahasa (Indonesia, Inggris, Jawa, Sunda, Spanyol, Prancis, Jerman, Jepang, Korea, Arab, Mandarin, Rusia).
-- **Input Suara & Output Suara:** Bisa input teks via mikrofon dan mendengarkan hasil terjemahan.
-- **Chatbot AI:** Chat dengan AI bernama Lingu, karakter sarkas dan sinis, default bahasa Indonesia.
-- **Downloader Media:** Mengunduh video dan media dari berbagai platform seperti TikTok, YouTube, Instagram, dan lainnya.
-- **Tab Navigasi:** Pindah antar fitur dengan tombol tab.
+- Chatbot AI berbasis Gemini API, karakter sarkas dan sinis, default bahasa Indonesia
+- Translator, include input suara, output suara, salin hasil, dan bersihkan teks
+- Downloader, untuk memproses link dari berbagai platform
 
 ## Struktur Folder
 
-```
-Lingu
-│
-├── index.html                # Halaman utama
-├── css/
-│   └── style.css             # Style kustom
-├── js/
-│   ├── script.js             # Inisialisasi aplikasi
-│   ├── dom.js                # Referensi elemen DOM
-│   ├── translator.js         # Logika penerjemah
-│   ├── downloader.js         # Backend untuk fitur Downloader
-│   ├── downloader.js         # Logika Downloader
-│   ├── chatbot.js            # Logika chatbot
-│   ├── service.js            # Koneksi ke Gemini API
-├── api/
-│   └── gemini.js             # API backend Gemini (untuk Vercel/Node.js)
-├── site.webmanifest          # Konfigurasi PWA
-├── .env                      # Simpan API Key (jika pakai backend)
-├── .gitignore
-└── README.md
-```
+Lingu  
+│  
+├── index.html  
+├── css/  
+│   └── style.css  
+├── js/  
+│   ├── script.js  
+│   ├── dom.js  
+│   ├── translator.js  
+│   ├── chatbot.js  
+│   ├── downloader.js  
+│   └── service.js  
+└── README.md  
 
 ## Cara Menjalankan
 
@@ -66,12 +56,16 @@ Lingu
 - **Web Speech API** untuk input/output suara.
 - **Fetch API** untuk komunikasi dengan backend.
 - **Google Gemini API** untuk AI dan penerjemah.
-
+- **Downloader Engine** btch-downloader
+  
 ## Credits
 
 - Dibuat oleh Faizun.
 - Deploy di Vercel.
 
 ---
+
+## Website: 
+[https://lingu-chatbot.vercel.app/](https://lingu-chatbot.vercel.app/)
 
 Aplikasi siap digunakan! 🚀
