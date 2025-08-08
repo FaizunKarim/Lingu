@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@bochilteam/scraper": "^5.0.1"
+    "btch-downloader": "^4.1.21",
+    "priyansh-ig-downloader": "^2.0.4"
   }
 }
