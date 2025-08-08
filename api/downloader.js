@@ -1,5 +1,4 @@
-import { aio, ttdl, fbdown, youtube } from 'btch-downloader';
-import { instagram, pinterest } from 'bimasky-dl';
+import { aio, ttdl, igdl, fbdown, youtube, pinterest } from 'btch-downloader';
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -13,24 +12,16 @@ export default async function handler(req, res) {
 
     try {
         let data;
-        if (url.includes('instagram.com')) {
-            const result = await instagram(url);
-            const downloadUrl = result?.url;
-            if (!downloadUrl) throw new Error('Link unduhan Instagram tidak ditemukan.');
-            data = { url: downloadUrl };
-
-        } else if (url.includes('pinterest.com') || url.includes('pin.it')) {
-            const result = await pinterest(url);
-            const downloadUrl = result?.url;
-            if (!downloadUrl) throw new Error('Link unduhan Pinterest tidak ditemukan.');
-            data = { url: downloadUrl };
-
-        } else if (url.includes('tiktok.com')) {
+        if (url.includes('tiktok.com')) {
             data = await ttdl(url);
+        } else if (url.includes('instagram.com')) {
+            data = await igdl(url);
         } else if (url.includes('facebook.com') || url.includes('fb.watch')) {
             data = await fbdown(url);
         } else if (url.includes('youtube.com') || url.includes('youtu.be')) {
             data = await youtube(url);
+        } else if (url.includes('pinterest.com') || url.includes('pin.it')) {
+            data = await pinterest(url);
         } else {
             try {
                 data = await aio(url);
