@@ -12,12 +12,13 @@ export default async function handler(req, res) {
 
     try {
         let data;
-        let result;
-
-        if (url.includes('tiktok.com')) {
-            result = await tiktok(url);
-        } else if (url.includes('instagram.com')) {
-            result = await instagram(url);
+        if (url.includes('instagram.com')) {
+            const result = await instagramdl(url);
+            data = { url: result[0].download_link }; 
+        } else if (url.includes('pinterest.com') || url.includes('pin.it')) {
+            data = await pinterestdl(url);
+        } else if (url.includes('tiktok.com')) {
+            data = await ttdl(url);
         } else if (url.includes('facebook.com') || url.includes('fb.watch')) {
             result = await facebook(url);
         } else if (url.includes('youtube.com') || url.includes('youtu.be')) {
@@ -27,14 +28,6 @@ export default async function handler(req, res) {
         } else {
             return res.status(400).json({ error: 'URL tidak didukung.' });
         }
-        
-        const downloadUrl = result?.[0]?.url;
-
-        if (!downloadUrl) {
-            throw new Error('Tidak dapat menemukan link unduhan dari hasil.');
-        }
-
-        data = { url: downloadUrl };
         
         res.status(200).json(data);
 
