@@ -1,4 +1,5 @@
-import { tiktok, instagram, facebook, youtube, pinterest } from '@bochilteam/scraper';
+import { aio, ttdl, fbdown, youtube, pinterest } from 'btch-downloader';
+import instagramdl from 'priyansh-ig-downloader';
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -12,29 +13,29 @@ export default async function handler(req, res) {
 
     try {
         let data;
-        let result;
+        if (url.includes('instagram.com')) {
+            // --- MENGGUNAKAN PUSTAKA BARU UNTUK INSTAGRAM ---
+            const result = await instagramdl(url);
+            // Mengambil link unduhan dari hasil
+            const downloadUrl = result?.[0]?.download_link; 
+            if (!downloadUrl) throw new Error('Link unduhan Instagram tidak ditemukan dari pustaka baru.');
+            data = { url: downloadUrl };
 
-        if (url.includes('tiktok.com')) {
-            result = await tiktok(url);
-        } else if (url.includes('instagram.com')) {
-            result = await instagram(url);
+        } else if (url.includes('tiktok.com')) {
+            data = await ttdl(url);
         } else if (url.includes('facebook.com') || url.includes('fb.watch')) {
-            result = await facebook(url);
+            data = await fbdown(url);
         } else if (url.includes('youtube.com') || url.includes('youtu.be')) {
-            result = await youtube(url);
+            data = await youtube(url);
         } else if (url.includes('pinterest.com') || url.includes('pin.it')) {
-            result = await pinterest(url);
+            data = await pinterest(url);
         } else {
-            return res.status(400).json({ error: 'URL tidak didukung.' });
+            try {
+                data = await aio(url);
+            } catch (aioError) {
+                return res.status(400).json({ error: 'URL tidak didukung atau tidak valid.' });
+            }
         }
-        
-        const downloadUrl = result?.[0]?.url;
-
-        if (!downloadUrl) {
-            throw new Error('Tidak dapat menemukan link unduhan dari hasil.');
-        }
-
-        data = { url: downloadUrl };
         
         res.status(200).json(data);
 
