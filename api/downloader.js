@@ -14,11 +14,9 @@ export default async function handler(req, res) {
     try {
         let data;
         if (url.includes('instagram.com')) {
-            // --- MENGGUNAKAN PUSTAKA BARU UNTUK INSTAGRAM ---
             const result = await instagramdl(url);
-            // Mengambil link unduhan dari hasil
             const downloadUrl = result?.[0]?.download_link; 
-            if (!downloadUrl) throw new Error('Link unduhan Instagram tidak ditemukan dari pustaka baru.');
+            if (!downloadUrl) throw new Error('Link unduhan Instagram tidak ditemukan.');
             data = { url: downloadUrl };
 
         } else if (url.includes('tiktok.com')) {
