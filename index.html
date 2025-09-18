@@ -36,13 +36,33 @@
             <button id="prev-tab-btn" class="p-2 text-gray-400 hover:text-white rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg>
             </button>
+
             <div class="flex items-center gap-2">
                 <span id="active-tab-name" class="text-lg font-medium text-white">Penerjemah</span>
-                <select id="model-selector" class="bg-gray-700 text-white text-sm rounded p-1 border border-gray-600 hidden">
-                    <option value="gemini">Gemini</option>
-                    <option value="ibm">IBM Granite</option>
-                </select>
+
+                <div id="custom-model-switcher" class="relative hidden">
+                    <button id="current-model-btn" class="flex items-center gap-1 text-lg font-medium text-white focus:outline-none animate-pulse hover:animate-none">
+                        <span id="current-model-text">Gemini</span>
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+
+                    <div id="model-options-container" class="absolute top-full mt-2 w-48 bg-gray-700 border border-gray-600 rounded-xl shadow-lg z-10 hidden p-2">
+                        <ul class="space-y-1">
+                            <li>
+                                <button data-model="gemini" class="model-option-btn w-full text-left px-4 py-2 text-sm text-white rounded-lg hover:bg-indigo-600 transition-colors duration-150">
+                                    Gemini
+                                </button>
+                            </li>
+                            <li>
+                                <button data-model="ibm" class="model-option-btn w-full text-left px-4 py-2 text-sm text-white rounded-lg hover:bg-indigo-600 transition-colors duration-150">
+                                    IBM Granite
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+            
             <button id="next-tab-btn" class="p-2 text-gray-400 hover:text-white rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
             </button>

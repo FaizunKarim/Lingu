@@ -1,7 +1,8 @@
 import { dom } from './dom.js';
-import { callGeminiAPI } from './service.js';
+import { callGeminiAPI, callIbmAPI } from './service.js';
 
 let chatHistory = [];
+let currentSelectedModel = 'gemini';
 
 const systemInstruction = {
     role: "user",
@@ -26,6 +27,13 @@ function appendChatMessage(sender, text) {
     dom.chatMessages.scrollTop = dom.chatMessages.scrollHeight;
 }
 
+function resetChat() {
+    dom.chatMessages.innerHTML = '';
+    appendChatMessage('bot', 'Halo, saya Lingu! Model telah diganti, mari kita mulai percakapan baru.');
+    chatHistory = [];
+    dom.chatbotInput.focus();
+}
+
 async function handleChatMessage() {
     const userMessage = dom.chatbotInput.value.trim();
     if (!userMessage) return;
@@ -39,10 +47,19 @@ async function handleChatMessage() {
     dom.chatbotInput.disabled = true;
 
     try {
-        const payload = { contents: [systemInstruction, ...chatHistory] };
-        const botResponse = await callGeminiAPI(payload);
+        let botResponse;
+
+        if (currentSelectedModel === 'gemini') {
+            const payload = { contents: [systemInstruction, ...chatHistory] };
+            botResponse = await callGeminiAPI(payload);
+        } else {
+            const payload = { messages: [systemInstruction, ...chatHistory] };
+            botResponse = await callIbmAPI(payload);
+        }
+
         appendChatMessage('bot', botResponse);
         chatHistory.push({ role: "model", parts: [{ text: botResponse }] });
+
     } catch (error) {
         const errorMessage = `Maaf, saya mengalami masalah. (${error.message})`;
         appendChatMessage('bot', errorMessage);
@@ -61,6 +78,33 @@ export function initChatbot() {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             handleChatMessage();
+        }
+    });
+
+    dom.currentModelBtn.addEventListener('click', () => {
+        dom.modelOptionsContainer.classList.toggle('hidden');
+    });
+
+    dom.modelOptionBtns.forEach(button => {
+        button.addEventListener('click', () => {
+            const selectedModel = button.getAttribute('data-model');
+            const modelName = button.textContent.trim();
+
+            if (currentSelectedModel !== selectedModel) {
+                currentSelectedModel = selectedModel;
+                dom.currentModelText.textContent = modelName;
+                
+                showNotice(`Model diubah ke ${modelName}.`);
+                resetChat();
+            }
+            
+            dom.modelOptionsContainer.classList.add('hidden');
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!dom.customModelSwitcher.contains(event.target)) {
+            dom.modelOptionsContainer.classList.add('hidden');
         }
     });
 }

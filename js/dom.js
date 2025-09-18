@@ -22,7 +22,11 @@ export const dom = {
     chatbotInput: document.getElementById('chatbot-input'),
     sendChatBtn: document.getElementById('send-chat-btn'),
     chatbotLoader: document.getElementById('chatbot-loader'),
-    modelSelector: document.getElementById('model-selector'),
+    customModelSwitcher: document.getElementById('custom-model-switcher'),
+    currentModelBtn: document.getElementById('current-model-btn'),
+    currentModelText: document.getElementById('current-model-text'),
+    modelOptionsContainer: document.getElementById('model-options-container'),
+    modelOptionBtns: document.querySelectorAll('.model-option-btn'),
 
     downloaderSection: document.getElementById('downloader-section'),
     downloaderUrlInput: document.getElementById('downloader-url'),
