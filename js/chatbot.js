@@ -56,7 +56,7 @@ function resetChat(newModelName) {
     chatHistory = [];
     dom.chatbotInput.focus();
 
-    resetMessageTimer = setTimeout(removeResetMessages, 10000);
+    resetMessageTimer = setTimeout(removeResetMessages, 1000);
 }
 
 async function handleChatMessage() {
@@ -83,7 +83,6 @@ async function handleChatMessage() {
         }
 
         appendChatMessage('bot', botResponse);
-        
         chatHistory.push({ role: "model", parts: [{ text: botResponse }] });
 
     } catch (error) {
