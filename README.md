@@ -50,7 +50,7 @@ Lingu
    
 3. **Cara Mendapatkan API Key Gemini dan IBM:**
    - Gemini : [Google AI Studio](https://aistudio.google.com/app/apikey).
-   - IBM Granite : [Replicate AI]([http://replicate.com/account](https://replicate.com/ibm-granite/granite-3.3-8b-instruct))
+   - IBM Granite : [http://replicate.com/account](https://replicate.com/ibm-granite/granite-3.3-8b-instruct)
    - Login, buat API Key, salin dan simpan di `.env`.
 
 ## Alur Chatbot
