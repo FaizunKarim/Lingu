@@ -2,7 +2,7 @@ import { dom } from './dom.js';
 import { callGeminiAPI, callIbmAPI } from './service.js';
 
 let chatHistory = [];
-let currentSelectedModel = 'gemini';
+let currentSelectedModel = 'ibm';
 let resetMessageTimer = null;
 
 function removeResetMessages() {
