@@ -10,25 +10,29 @@ Website multifungsi: Chatbot AI, Translator, dan Downloader dalam satu aplikasi 
 
 ## Struktur Folder
 
+```
 Lingu/
-│  
-├── index.html 
+│
 ├── api/
-│   ├── gemini.js  
-│   ├── downloader.js  
-│   └── ibm.js  
-├── css/  
-│   └── style.css  
-├── js/  
-│   ├── script.js  
-│   ├── dom.js  
-│   ├── translator.js  
-│   ├── chatbot.js  
-│   ├── downloader.js  
-│   └── service.js  
-├── gitignore
+│   ├── gemini.js
+│   └── ibm.js
+│
+├── index.html
+├── README.md
+├── .gitignore
 ├── favicon.ico
-└── README.md  
+│
+├── css/
+│   └── style.css
+│
+└── js/
+├── script.js
+├── dom.js
+├── translator.js
+├── chatbot.js
+├── downloader.js
+└── service.js
+```
 
 ## Cara Menjalankan
 
