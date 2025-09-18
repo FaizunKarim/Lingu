@@ -83,6 +83,7 @@ async function handleChatMessage() {
         }
 
         appendChatMessage('bot', botResponse);
+        
         chatHistory.push({ role: "model", parts: [{ text: botResponse }] });
 
     } catch (error) {
