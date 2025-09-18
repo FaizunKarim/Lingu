@@ -26,7 +26,7 @@ Lingu
 │   ├── chatbot.js  
 │   ├── downloader.js  
 │   └── service.js  
-├── .gitignore
+├── gitignore
 ├── favicon.ico
 └── README.md  
 
