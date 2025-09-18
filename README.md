@@ -4,9 +4,9 @@ Website multifungsi: Chatbot AI, Translator, dan Downloader dalam satu aplikasi 
 
 ## Fitur Utama
 
-- Chatbot AI berbasis Gemini API, default bahasa Indonesia
-- Translator, include input suara, output suara, salin hasil, dan bersihkan teks
-- Downloader, untuk memproses link dari berbagai platform
+- Chatbot AI berbasis Gemini dan IBM, default bahasa Indonesia.
+- Translator, include input suara, output suara, salin hasil, dan bersihkan teks.
+- Downloader, untuk memproses link dari youtube, facebook, instagram, tiktok, dan X menjadi file mp3 atau mp4.
 
 ## Struktur Folder
 
@@ -33,13 +33,13 @@ Lingu
      GEMINI_API_KEY=API_KEY_KAMU
     ```
    - Endpoint backend ada di [`api/gemini.js`](api/gemini.js).
-2. **Buka Web Menggunakan Vercel CLI**
+2. **Buka Web Menggunakan Vercel CLI:**
    - Instal Vercel CLI: npm install -g vercel
    - Login ke Vercel: vercel login
    - Jalankan server pengembangan: vercel dev
    - Web akan secara otomatis berjalan di server lokal http://localhost:3000 di browser Anda.
    
-4. **Dapatkan API Key Gemini:**
+4. **Cara Mendapatkan API Key Gemini dan IBM:**
    - Gemini : [Google AI Studio](https://aistudio.google.com/app/apikey).
    - IBM Granite : 
    - Login, buat API Key, salin dan simpan di `.env`.
@@ -53,9 +53,9 @@ Lingu
 
 - **Tailwind CSS** untuk styling.
 - **Web Speech API** untuk input/output suara.
-- **Fetch API** untuk komunikasi dengan backend.
+- **IBM Granite Replicate API** untuk AI chatbot.
 - **Google Gemini API** untuk AI dan penerjemah.
-- **Downloader Engine** btch-downloader
+- **btch-downloader** untuk Downloader Engine.
   
 ## Credits
 
