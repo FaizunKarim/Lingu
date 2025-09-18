@@ -3,6 +3,16 @@ import { callGeminiAPI, callIbmAPI } from './service.js';
 
 let chatHistory = [];
 let currentSelectedModel = 'gemini';
+let resetMessageTimer = null;
+
+function removeResetMessages() {
+    if (resetMessageTimer) {
+        clearTimeout(resetMessageTimer);
+        resetMessageTimer = null;
+    }
+    const notices = document.querySelectorAll('.reset-notice');
+    notices.forEach(notice => notice.remove());
+}
 
 const systemInstruction = {
     role: "user",
@@ -29,14 +39,15 @@ function appendChatMessage(sender, text) {
 
 function resetChat(newModelName) {
     dom.chatMessages.innerHTML = '';
+    removeResetMessages();
 
     const newChatHeading = document.createElement('div');
-    newChatHeading.className = 'text-center text-gray-400 text-xs my-2';
+    newChatHeading.className = 'text-center text-gray-400 text-xs my-2 reset-notice';
     newChatHeading.textContent = 'New chat';
     dom.chatMessages.appendChild(newChatHeading);
 
     const modelChangeNotice = document.createElement('div');
-    modelChangeNotice.className = 'text-center text-gray-400 text-xs mb-3';
+    modelChangeNotice.className = 'text-center text-gray-400 text-xs mb-3 reset-notice';
     modelChangeNotice.textContent = `Model telah diganti ke ${newModelName}`;
     dom.chatMessages.appendChild(modelChangeNotice);
 
@@ -44,6 +55,8 @@ function resetChat(newModelName) {
 
     chatHistory = [];
     dom.chatbotInput.focus();
+
+    resetMessageTimer = setTimeout(removeResetMessages, 10000);
 }
 
 async function handleChatMessage() {
@@ -94,6 +107,8 @@ export function initChatbot() {
             handleChatMessage();
         }
     });
+
+    dom.chatbotInput.addEventListener('input', removeResetMessages);
 
     dom.currentModelBtn.addEventListener('click', () => {
         dom.modelOptionsContainer.classList.toggle('hidden');
