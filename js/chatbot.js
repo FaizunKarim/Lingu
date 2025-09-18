@@ -27,9 +27,21 @@ function appendChatMessage(sender, text) {
     dom.chatMessages.scrollTop = dom.chatMessages.scrollHeight;
 }
 
-function resetChat() {
+function resetChat(newModelName) {
     dom.chatMessages.innerHTML = '';
-    appendChatMessage('bot', 'Halo, saya Lingu! Model telah diganti, mari kita mulai percakapan baru.');
+
+    const newChatHeading = document.createElement('div');
+    newChatHeading.className = 'text-center text-gray-400 text-xs my-2';
+    newChatHeading.textContent = 'New chat';
+    dom.chatMessages.appendChild(newChatHeading);
+
+    const modelChangeNotice = document.createElement('div');
+    modelChangeNotice.className = 'text-center text-gray-400 text-xs mb-3';
+    modelChangeNotice.textContent = `Model telah diganti ke ${newModelName}`;
+    dom.chatMessages.appendChild(modelChangeNotice);
+
+    appendChatMessage('bot', 'Halo saya Lingu, Ada yang bisa dibantu ?');
+
     chatHistory = [];
     dom.chatbotInput.focus();
 }
@@ -73,6 +85,8 @@ async function handleChatMessage() {
 }
 
 export function initChatbot() {
+    appendChatMessage('bot', 'Halo saya Lingu, Ada yang bisa dibantu ?');
+
     dom.sendChatBtn.addEventListener('click', handleChatMessage);
     dom.chatbotInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -93,11 +107,9 @@ export function initChatbot() {
             if (currentSelectedModel !== selectedModel) {
                 currentSelectedModel = selectedModel;
                 dom.currentModelText.textContent = modelName;
-                
-                showNotice(`Model diubah ke ${modelName}.`);
-                resetChat();
+                resetChat(modelName);
             }
-            
+
             dom.modelOptionsContainer.classList.add('hidden');
         });
     });
