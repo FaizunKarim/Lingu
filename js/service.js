@@ -22,3 +22,24 @@ export async function callGeminiAPI(payload) {
         throw new Error("Respons dari API tidak valid atau kosong.");
     }
 }
+
+export async function callIbmAPI(payload) {
+    const response = await fetch('/api/ibm', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+        const errorMsg = result.error || `HTTP Error ${response.status}`;
+        throw new Error(errorMsg);
+    }
+
+    if (result.text) {
+        return result.text;
+    } else {
+        throw new Error("Respons dari API IBM tidak memiliki format yang diharapkan.");
+    }
+}

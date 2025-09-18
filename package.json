@@ -1,5 +1,12 @@
 {
+  "name": "lingu-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website Chatbot, Downloader, dan Translator",
+  "type": "module",
   "dependencies": {
-    "btch-downloader": "^4.1.21"
+    "btch-downloader": "^4.1.21",
+    "dotenv": "^16.4.1",
+    "replicate": "*"
   }
 }

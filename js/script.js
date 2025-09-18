@@ -41,6 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 dom.inputArea.style.display = 'none';
             }
         }
+
+        if (dom.modelSelector) {
+            if (activeTabInfo && activeTabInfo.id === 'chatbot-section') {
+                dom.modelSelector.classList.remove('hidden');
+            } else {
+                dom.modelSelector.classList.add('hidden');
+            }
+        }
     }
 
     function navigateTabs(direction) {

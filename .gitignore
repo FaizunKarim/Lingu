@@ -1,2 +1,4 @@
 .env
 .vercel
+.npmrc
+/node_modules

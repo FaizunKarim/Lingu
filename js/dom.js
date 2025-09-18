@@ -22,6 +22,7 @@ export const dom = {
     chatbotInput: document.getElementById('chatbot-input'),
     sendChatBtn: document.getElementById('send-chat-btn'),
     chatbotLoader: document.getElementById('chatbot-loader'),
+    modelSelector: document.getElementById('model-selector'),
 
     downloaderSection: document.getElementById('downloader-section'),
     downloaderUrlInput: document.getElementById('downloader-url'),
