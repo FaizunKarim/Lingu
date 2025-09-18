@@ -10,7 +10,7 @@ Website multifungsi: Chatbot AI, Translator, dan Downloader dalam satu aplikasi 
 
 ## Struktur Folder
 
-Lingu  
+Lingu/
 │  
 ├── index.html 
 ├── api/
