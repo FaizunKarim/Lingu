@@ -28,21 +28,11 @@ export default async function handler(req, res) {
 
     const model = 'ibm-granite/granite-3.3-8b-instruct:601ff87e6afa76bd7bdbf8292ea250d70b0ad2ddedc17c236e7fa3fe38a374a8';
     const input = {
-        stop: [],
-        tools: [],
-        top_k: 50,
-        top_p: 0.9,
         prompt: finalPrompt,
-        stream: false,
-        messages: [],
-        documents: [],
         max_tokens: 512,
-        min_tokens: 0,
         temperature: 0.6,
-        presence_penalty: 0,
-        frequency_penalty: 0,
-        chat_template_kwargs: {},
-        add_generation_prompt: true
+        top_p: 0.9,
+        frequency_penalty: 0.5,
     };
 
     const output = await replicate.run(model, { input });
