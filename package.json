@@ -5,8 +5,8 @@
   "description": "Website Chatbot, Downloader, dan Translator",
   "type": "module",
   "dependencies": {
-    "btch-downloader": "^4.1.21",
-    "dotenv": "^16.4.1",
+    "btch-downloader": "*",
+    "dotenv": "*",
     "replicate": "*"
   }
 }
